@@ -13,19 +13,20 @@
        Base
        ========================= */
     :root {
-      --bg: #0f0f0f;
-      --bg-soft: #1a1a1a;
-      --bg-grid: #252525;
-      --card: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text: #e0e0e0;
-      --muted: #a0a0a0;
-      --accent: #4a9eff;
-      --accent-2: #6c5ce7;
-      --accent-3: #a29bfe;
-      --accent-4: #fdcb6e;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.2);
+      --bg: #0a0e27;
+      --bg-soft: #0f1535;
+      --bg-grid: #141e3f;
+      --card: rgba(15, 21, 53, 0.5);
+      --card-border: rgba(74, 158, 255, 0.15);
+      --text: #e8f0ff;
+      --muted: #8899cc;
+      --accent: #00d4ff;
+      --accent-2: #a855f7;
+      --accent-3: #ec4899;
+      --accent-4: #fbbf24;
+      --shadow: 0 0 30px rgba(74, 158, 255, 0.15);
+      --shadow-soft: 0 0 15px rgba(74, 158, 255, 0.08);
+      --glow: 0 0 20px rgba(0, 212, 255, 0.4);
       --maxw: 1100px;
       --radius: 8px;
       --transition: all 0.3s ease;
@@ -467,6 +468,20 @@
       border-radius: 16px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
+      transition: var(--transition);
+    }
+
+    .highlight:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow), inset 0 0 15px rgba(0, 212, 255, 0.1);
+      background: rgba(15, 100, 150, 0.15);
+    }
+
+    .highlight-list-achievement {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
     }
 
     footer {
@@ -590,7 +605,13 @@
             <div class="highlight">2025.11 – 至今：上海人工智能实验室（AIVC 虚拟细胞大模型研发）</div>
             <div class="highlight">2025.09 – 2025.10：上海人工智能实验室（材料势函数建模、深度学习算法研发）</div>
             <div class="highlight">2024.02：Microsoft AI4Science “明日之星”项目研究实习完成</div>
-            <div class="highlight">近期成果：Kaggle Competition Expert（Top 2%）、已公开专利 1 项、软件著作权 3 项</div>
+          </div>
+
+          <h3 class="section-subtitle" style="margin-top: 24px;">近期成果</h3>
+          <div class="highlight-list-achievement">
+            <div class="highlight">🏆 Kaggle Competition Expert<br><span class="inline-note" style="font-size: 0.85rem;">Top 2%</span></div>
+            <div class="highlight">📋 已公开专利<br><span class="inline-note" style="font-size: 0.85rem;">1 项</span></div>
+            <div class="highlight">🔐 软件著作权<br><span class="inline-note" style="font-size: 0.85rem;">3 项</span></div>
           </div>
 
           <h3 class="section-subtitle" style="margin-top: 24px;">荣誉与资质</h3>
