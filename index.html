@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>陈水洲 | Academic Homepage</title>
+  <meta name="description" content="陈水洲的学术主页：AI for Science, Diffusion Models, Graph Foundation Models, Virtual Cells, Materials & Molecules." />
+  <style>
+    /* =========================
+       Base
+       ========================= */
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #10182f;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.10);
+      --text: #eef2ff;
+      --muted: #b9c3e1;
+      --accent: #7cc7ff;
+      --accent-2: #9ff3d2;
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+      --maxw: 1100px;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124, 199, 255, 0.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(159, 243, 210, 0.10), transparent 24%),
+        linear-gradient(180deg, #09101f 0%, #0b1020 100%);
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 28px 0;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      margin: 0 0 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 0.98rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    /* =========================
+       Nav
+       ========================= */
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(9, 16, 31, 0.72);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* =========================
+       Hero
+       ========================= */
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-card {
+      padding: 34px 28px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(124, 199, 255, 0.12);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(124,199,255,0.18), rgba(159,243,210,0.16));
+      border-color: rgba(124,199,255,0.28);
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-card {
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       Grid layouts
+       ========================= */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    /* =========================
+       Content cards
+       ========================= */
+    .content-card {
+      padding: 22px 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline-item:first-child {
+      padding-top: 0;
+    }
+
+    .timeline-title {
+      margin: 0 0 4px;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    .timeline-sub {
+      color: var(--muted);
+      margin: 0 0 6px;
+      font-size: 0.96rem;
+    }
+
+    .timeline-date {
+      color: var(--accent-2);
+      font-weight: 700;
+      white-space: nowrap;
+      align-self: start;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .inline-note {
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    ul.clean {
+      margin: 8px 0 0 1.15em;
+      padding: 0;
+    }
+
+    ul.clean li {
+      margin: 6px 0;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pub-item {
+      padding: 16px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .pub-item strong {
+      color: var(--text);
+    }
+
+    .pub-meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-top: 4px;
+    }
+
+    .highlight-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .highlight {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* =========================
+       Footer
+       ========================= */
+    footer {
+      padding: 30px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    /* =========================
+       Responsive
+       ========================= */
+    @media (max-width: 900px) {
+      .hero-card,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <div class="brand">陈水洲 · Academic Homepage</div>
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#education">教育</a>
+        <a href="#research">科研</a>
+        <a href="#projects">项目</a>
+        <a href="#publications">发表</a>
+        <a href="#competitions">竞赛</a>
+        <a href="#skills">技能</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card card">
+          <div>
+            <div class="eyebrow">AI for Science · Materials · Virtual Cells</div>
+            <h1>陈水洲</h1>
+            <p>
+              上海大学计算机工程与科学学院硕博连读研究生，当前研究聚焦于
+              GNN、Diffusion Models、Graph Foundation Models、
+              Diffusion LM、多模态表示与对齐，以及它们在 AIVC、材料与分子逆向设计、
+              动态模拟中的应用。
+            </p>
+            <div class="chips">
+              <div class="chip">GNN</div>
+              <div class="chip">Diffusion Models</div>
+              <div class="chip">Graph Foundation Models</div>
+              <div class="chip">AIVC</div>
+              <div class="chip">Materials & Molecules</div>
+              <div class="chip">Multimodal Alignment</div>
+            </div>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:shuizhou@shu.edu.cn">✉ 邮件联系</a>
+              <a class="btn" href="https://scholar.google.com/citations?user=vlVoFV4AAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+              <a class="btn" href="https://github.com/V-cyberpunk-01" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <div class="mini-card">
+              <div class="mini-label">邮箱</div>
+              <div class="mini-value">shuizhou@shu.edu.cn</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">电话</div>
+              <div class="mini-value">(+86) 13207120996</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">当前身份</div>
+              <div class="mini-value">Shanghai University · PhD Track Student</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid-2">
+        <div class="content-card card">
+          <h2 class="section-title">研究兴趣</h2>
+          <p>
+            GNN、Diffusion model、Graph foundation model（面向 AIVC、动态模拟、
+            材料与分子逆向设计），以及 Diffusion LM、多模态表示学习与对齐。
+          </p>
+        </div>
+        <div class="content-card card">
+          <h2 class="section-title">荣誉与资质</h2>
+          <div class="highlight-list">
+            <div class="highlight">上海大学国家奖学金（2022，英语六级 607 分）</div>
+            <div class="highlight">上海大学计算机学院学业奖学金第一名（2022）</div>
+            <div class="highlight">Kaggle Competition Expert（Top 2%）</div>
+            <div class="highlight">已公开专利 1 项，软件著作权 3 项</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <div class="content-card card">
+          <h2 class="section-title">教育经历</h2>
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">上海大学 · 上海</div>
+              <div class="timeline-sub">硕博连读研究生，计算机工程与科学学院</div>
+              <div class="inline-note">导师：钱权教授</div>
+            </div>
+            <div class="timeline-date">2021.09 – 至今</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <div class="container">
+        <div class="content-card card">
+          <h2 class="section-title">科研经历</h2>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">上海人工智能实验室</div>
+              <div class="timeline-sub">生命科学大模型实习生（虚拟细胞方向）</div>
+              <div class="inline-note">Mentor：孙思琪老师，高张阳老师</div>
+              <ul class="clean">
+                <li>Virtual Cell Research：建模 control / pert 基因转录组中的扰动问题。</li>
+                <li>设计 conditional flow model，拟合特定条件下 control 组细胞到 pert 状态的群体迁移。</li>
+              </ul>
+            </div>
+            <div class="timeline-date">2025.11 – 至今</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">上海人工智能实验室</div>
+              <div class="timeline-sub">材料科学大模型实习生（势函数方向）</div>
+              <div class="inline-note">Mentor：郝红霞老师</div>
+              <ul class="clean">
+                <li>以 E2Former 为基线开发新型深度学习势函数算法。</li>
+                <li>在球谐卷积基础上引入 Graph Transformer 与平滑函数设计，在保持速度的前提下提升预测性能。</li>
+              </ul>
+            </div>
+            <div class="timeline-date">2025.09 – 2025.10</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">Microsoft AI4Science</div>
+              <div class="timeline-sub">明日之星项目研究实习生</div>
+              <div class="inline-note">Mentor：Dr. Hongxia Hao, Dr. Han Yang, Dr. Ziheng Lu and Dr. Haiguang Liu</div>
+              <ul class="clean">
+                <li><strong>MatterGen</strong>：面向固体周期性材料逆向生成，参与 diffusion score-based model 设计与 conditional generation block 开发。</li>
+                <li><strong>MatterSim</strong>：参与极端条件下合金材料势函数建模、MP 数据预训练与微调、fine-tuning 与 train-from-scratch 横向比较及论文撰写。</li>
+              </ul>
+            </div>
+            <div class="timeline-date">2023.07 – 2024.02</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="content-card card">
+          <h2 class="section-title">科研项目与合作经历</h2>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">国家重点研发项目《材料基因工程专用数据库平台建设与示范应用》</div>
+              <div class="timeline-sub">算法研发成员</div>
+              <div class="inline-note">为平台设计并集成机器学习算法和材料逆向设计相关功能。</div>
+            </div>
+            <div class="timeline-date">2021 – 2022</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">云南省重大科技专项《云南省稀贵金属材料基因工程（一期 2020）》</div>
+              <div class="timeline-sub">算法研发成员</div>
+              <div class="inline-note">实现集成机器学习方法与部署等工作。</div>
+            </div>
+            <div class="timeline-date">2021 – 2022</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">云南省重大科技专项《云南省稀贵金属材料基因工程（二期 2023）》</div>
+              <div class="timeline-sub">算法研发成员</div>
+              <div class="inline-note">设计以 GPT 为导向的材料类 LLM 架构并落地 Material GPT。</div>
+            </div>
+            <div class="timeline-date">2023 – 至今</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">“十四五”国家重点研发计划“增材制造与激光制造”专项</div>
+              <div class="timeline-sub">技术骨干</div>
+              <div class="inline-note">参与“同/异质 SiCp/Al 复合材料构件激光智能焊接技术与装备”项目及焊接全生命周期数据库与数据挖掘工作。</div>
+            </div>
+            <div class="timeline-date">2023 – 至今</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">重点新材料研发及应用国家科技重大专项《海量多源异构材料数据质量分级与全生命周期质量评价技术》</div>
+              <div class="timeline-sub">技术骨干及核心成员</div>
+              <div class="inline-note">参与项目申请、落地和相关研究；项目申请阶段材料撰写贡献学生顺位第一。</div>
+            </div>
+            <div class="timeline-date">2024.06 – 至今</div>
+          </div>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">日本 JSPS KAKENHI 国际合作项目</div>
+              <div class="timeline-sub">合作单位：东京大学、北海道大学 WPI-ICReDD、RIKEN</div>
+              <div class="inline-note">围绕材料/催化/化学性质预测中的几何深度学习与领域模型开展研究，参与方法设计、实验分析与论文撰写。Grant Number: 24K23848, 25K03174.</div>
+            </div>
+            <div class="timeline-date">2025.03 – 至今</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <div class="content-card card">
+          <h2 class="section-title">发表</h2>
+          <p class="section-subtitle">† indicates equal contributions</p>
+
+          <div class="pub-list">
+            <div class="pub-item">
+              <strong>Shuizhou Chen</strong>, He Cao, Qiubao Ouyang, Xing Wu, Quan Qian.
+              “ALDS: An active learning method for multi-source materials data screening and materials design”.
+              <div class="pub-meta">Materials &amp; Design · IF 9.417</div>
+            </div>
+
+            <div class="pub-item">
+              <strong>Shuizhou Chen</strong>, Chenghan Sun, Zhiyuan Liu, Andi Han, Ichigaku Takigawa, Quan Qian.
+              “CompGen: A Conditional Generation Framework for Inverse Composition Design of Catalytic Surfaces”.
+              <div class="pub-meta">NeurIPS 2025 Workshop AI4Science &amp; AI4Mat</div>
+            </div>
+
+            <div class="pub-item">
+              <strong>Shuizhou Chen</strong>, Yuchao Tang, Wenbin Ye, Yi Liu, Quan Qian.
+              “Beyond global: 3D Equivalent Local Augmentation Deep Graph Neural Networks for Formation Energy Prediction on Doping Crystal Structure”.
+              <div class="pub-meta">JCPC · under review</div>
+            </div>
+
+            <div class="pub-item">
+              <strong>Shuizhou Chen</strong>, Lidong Chen, Lyuwen Fu, Bili Xu, Jiong Yang, Yunhua Yang, Tong-Yi Zhang, Quan Qian, Wei Xie.
+              “PolyX: AI-Driven Polyimide Design with Hybrid GNN-Transformer Frameworks”.
+              <div class="pub-meta">Manuscript in preparation</div>
+            </div>
+
+            <div class="pub-item">
+              Lidong Chen†, <strong>Shuizhou Chen†</strong>, Quan Qian, Wei Xie.
+              “Segment Mask Attention GNN: an exclusive Graph Transformer for polymer representation”.
+              <div class="pub-meta">NPJ Computational Materials · under review</div>
+            </div>
+
+            <div class="pub-item">
+              Han Yang†, Chenxi Hu†, Yichi Zhou†, Xixian Liu†, Yu Shi†, Jielan Li†, Guanzhi Li†, Zekun Chen†, <strong>Shuizhou Chen†</strong>, et al.
+              “MatterSim: A Deep Learning Atomistic Model Across Elements, Temperatures and Pressures”.
+              <div class="pub-meta">Microsoft Research AI4Science · Nature under review</div>
+            </div>
+
+            <div class="pub-item">
+              Jielan Li, Zekun Chen, Qian Wang, Han Yang, Ziheng Lu, Guanzhi Li, <strong>Shuizhou Chen</strong>, et al.
+              “Probing the Limit of Heat Transfer in Inorganic Crystals with Deep Learning”.
+              <div class="pub-meta">Microsoft Research AI4Science · Science under review</div>
+            </div>
+
+            <div class="pub-item">
+              Chenghan Sun†, <strong>Shuizhou Chen†</strong>, Zekun Chen†, Wang-Yeuk Kong, Ichigaku Takigawa.
+              “Comparative Analysis of Domain-Specific and Geometric Deep Learning Models in Chemical Property Predictions”.
+              <div class="pub-meta">Poster · Information-Based Induction Sciences and Machine Learning · Saitama, Japan · Nov. 2024</div>
+            </div>
+
+            <div class="pub-item">
+              Xu P, Chen C, <strong>Shuizhou Chen</strong>, et al.
+              “Machine learning-assisted design of yttria-stabilized zirconia thermal barrier coatings with high bonding strength/JJ”.
+              <div class="pub-meta">ACS Omega</div>
+            </div>
+
+            <div class="pub-item">
+              Yuchao Tang, Bin Xiao, <strong>Shuizhou Chen</strong>, Quan Qian, Yi Liu.
+              “Predefined attention-focused mechanism using center-environment features: a machine learning study of alloying effects on the stability of Nb5Si3 alloys”.
+              <div class="pub-meta">Digital Discovery</div>
+            </div>
+
+            <div class="pub-item">
+              <strong>SCALE</strong>: Scalable Conditional Atlas-Level Endpoint Transport for Virtual Cell Perturbation Prediction.
+              <div class="pub-meta">Manuscript in preparation</div>
+            </div>
+
+            <div class="pub-item">
+              <strong>陈水洲</strong>，王晓书，欧阳求保，张瑞。《数据驱动的铝基复合材料性能预测和逆向设计》。
+              <div class="pub-meta">《上海大学学报自然科学版》</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competitions" class="section">
+      <div class="container grid-2">
+        <div class="content-card card">
+          <h2 class="section-title">竞赛经历</h2>
+          <div class="highlight-list">
+            <div class="highlight">
+              <strong>Kaggle 竞赛</strong><br />
+              NLP 类比赛两次银牌，CV 类比赛一次银牌。
+            </div>
+            <div class="highlight">
+              <strong>Jigsaw Rate Severity of Toxic Comments</strong><br />
+              评论间相似度排序，baseline 使用 Ridge + fastText + Improved RoBERTa。
+            </div>
+            <div class="highlight">
+              <strong>CommonLit Readability Prize</strong><br />
+              文本分类任务，评定 3–12 年级课堂使用的文学段落复杂程度。
+            </div>
+            <div class="highlight">
+              <strong>RANZCR CLiP - Catheter and Line Position Challenge</strong><br />
+              医学影像任务，设计多模态混合 CV 框架，利用混合 loss 训练完成分类。
+            </div>
+            <div class="highlight">
+              <strong>阿里天池大数据竞赛全球人工智能技术创新大赛（赛道一）</strong><br />
+              2021 · 银牌（NLP 方向）
+            </div>
+            <div class="highlight">
+              <strong>全国大学生英语竞赛</strong><br />
+              三次获奖：两次三等、一次二等奖
+            </div>
+          </div>
+        </div>
+
+        <div id="skills" class="content-card card">
+          <h2 class="section-title">技术技能</h2>
+          <div class="highlight-list">
+            <div class="highlight"><strong>ML / DL</strong><br />熟练使用常规机器学习与深度学习技术。</div>
+            <div class="highlight"><strong>GNN</strong><br />熟悉图表征、几何图深度学习、图生成模型及科学计算中的图算法应用；熟悉 ESEN、Eqv2 等势函数类型。</div>
+            <div class="highlight"><strong>Diffusion</strong><br />熟练使用 DDPM、SDE、Bridge model 等方法，关注 conditional generation 与 geometry 结合。</div>
+            <div class="highlight"><strong>LLM</strong><br />熟练使用 Adapter、LoRA 等微调技术，熟悉 Megatron、SFT、RLHF、多模态对齐与 Agent 相关技术。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> 陈水洲 · Built with GitHub Pages
+  </footer>
+
+  <script>
+    // Keep the year updated automatically.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
