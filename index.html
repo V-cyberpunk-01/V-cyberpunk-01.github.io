@@ -43,7 +43,7 @@
       font-family: 'Rajdhani', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
                    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       color: var(--text);
-      background: url('https://w.wallhaven.cc/full/x8/x83xwd.jpg') center/cover fixed,
+      background: url('./wallhaven-x83xwd_3840x2160.png') center/cover fixed,
                   linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(15, 21, 53, 0.8) 50%, rgba(20, 30, 63, 0.8) 100%);
       background-blend-mode: overlay;
       line-height: 1.6;
@@ -140,8 +140,9 @@
     }
 
     .card:hover {
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow-soft);
+      border-color: var(--accent);
+      box-shadow: var(--glow), inset 0 0 15px rgba(0, 212, 255, 0.1);
+      background: rgba(15, 100, 150, 0.2);
       transform: translateY(-2px);
     }
 
@@ -309,6 +310,13 @@
       border-radius: 18px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
+      transition: var(--transition);
+    }
+
+    .mini-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow), inset 0 0 15px rgba(0, 212, 255, 0.1);
+      background: rgba(15, 100, 150, 0.15);
     }
 
     .mini-label {
@@ -437,6 +445,13 @@
       border-radius: 16px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
+      transition: var(--transition);
+    }
+
+    .pub-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow), inset 0 0 15px rgba(0, 212, 255, 0.1);
+      background: rgba(15, 100, 150, 0.15);
     }
 
     .pub-item strong {
@@ -768,13 +783,13 @@
           <div class="pub-list">
             <div class="pub-item">
               <strong>Shuizhou Chen</strong>, He Cao, Qiubao Ouyang, Xing Wu, Quan Qian.
-              “ALDS: An active learning method for multi-source materials data screening and materials design”.
-              <div class="pub-meta">Materials &amp; Design · IF 9.417</div>
+              <a href="https://doi.org/10.1016/j.matdes.2022.111092" target="_blank" rel="noreferrer" style="color: var(--accent);">"ALDS: An active learning method for multi-source materials data screening and materials design"</a>.
+              <div class="pub-meta">Materials &amp; Design 223 · 111092, 2022</div>
             </div>
 
             <div class="pub-item">
               <strong>Shuizhou Chen</strong>, Chenghan Sun, Zhiyuan Liu, Andi Han, Ichigaku Takigawa, Quan Qian.
-              “CompGen: A Conditional Generation Framework for Inverse Composition Design of Catalytic Surfaces”.
+              <a href="https://openreview.net/pdf?id=xzaFhrVIck" target="_blank" rel="noreferrer" style="color: var(--accent);">"CompGen: A Conditional Generation Framework for Inverse Composition Design of Catalytic Surfaces"</a>.
               <div class="pub-meta">NeurIPS 2025 Workshop AI4Science &amp; AI4Mat</div>
             </div>
 
@@ -798,14 +813,14 @@
 
             <div class="pub-item">
               Han Yang†, Chenxi Hu†, Yichi Zhou†, Xixian Liu†, Yu Shi†, Jielan Li†, Guanzhi Li†, Zekun Chen†, <strong>Shuizhou Chen†</strong>, et al.
-              “MatterSim: A Deep Learning Atomistic Model Across Elements, Temperatures and Pressures”.
-              <div class="pub-meta">Microsoft Research AI4Science · Manuscript in preparation</div>
+              <a href="https://arxiv.org/abs/2405.04967" target="_blank" rel="noreferrer" style="color: var(--accent);">"MatterSim: A Deep Learning Atomistic Model Across Elements, Temperatures and Pressures"</a>.
+              <div class="pub-meta">arXiv preprint arXiv:2405.04967, 2024</div>
             </div>
 
             <div class="pub-item">
               Jielan Li, Zekun Chen, Qian Wang, Han Yang, Ziheng Lu, Guanzhi Li, <strong>Shuizhou Chen</strong>, et al.
-              “Probing the Limit of Heat Transfer in Inorganic Crystals with Deep Learning”.
-              <div class="pub-meta">Microsoft Research AI4Science · Manuscript in preparation</div>
+              <a href="https://arxiv.org/abs/2503.11568" target="_blank" rel="noreferrer" style="color: var(--accent);">"Probing the Limit of Heat Transfer in Inorganic Crystals with Deep Learning"</a>.
+              <div class="pub-meta">arXiv preprint arXiv:2503.11568, 2025</div>
             </div>
 
             <div class="pub-item">
@@ -816,14 +831,14 @@
 
             <div class="pub-item">
               Xu P, Chen C, <strong>Shuizhou Chen</strong>, et al.
-              “Machine learning-assisted design of yttria-stabilized zirconia thermal barrier coatings with high bonding strength/JJ”.
-              <div class="pub-meta">ACS Omega</div>
+              <a href="https://doi.org/10.1021/acsomega.2c03000" target="_blank" rel="noreferrer" style="color: var(--accent);">"Machine learning-assisted design of yttria-stabilized zirconia thermal barrier coatings with high bonding strength"</a>.
+              <div class="pub-meta">ACS Omega 7 (24), 21052-21061, 2022</div>
             </div>
 
             <div class="pub-item">
               Yuchao Tang, Bin Xiao, <strong>Shuizhou Chen</strong>, Quan Qian, Yi Liu.
-              “Predefined attention-focused mechanism using center-environment features: a machine learning study of alloying effects on the stability of Nb5Si3 alloys”.
-              <div class="pub-meta">Digital Discovery</div>
+              <a href="https://doi.org/10.1039/D5DD00242G" target="_blank" rel="noreferrer" style="color: var(--accent);">"Predefined attention-focused mechanism using center-environment features: a machine learning study of alloying effects on the stability of Nb5Si3 alloys"</a>.
+              <div class="pub-meta">Digital Discovery 4 (7), 1870-1883, 2025</div>
             </div>
 
             <div class="pub-item">
@@ -832,8 +847,8 @@
             </div>
 
             <div class="pub-item">
-              <strong>陈水洲</strong>，王晓书，欧阳求保，张瑞。《数据驱动的铝基复合材料性能预测和逆向设计》。
-              <div class="pub-meta">《上海大学学报自然科学版》</div>
+              <strong>陈水洲</strong>，王晓书，欧阳求保，张瑞。<a href="https://doi.org/10.13918/j.issn1007-7626.2022.03.001" target="_blank" rel="noreferrer" style="color: var(--accent);">《数据驱动的铝基复合材料性能预测和逆向设计》</a>。
+              <div class="pub-meta">《上海大学学报自然科学版》28 (3), 512-522, 2022</div>
             </div>
           </div>
         </div>
