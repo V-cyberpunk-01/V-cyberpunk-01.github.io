@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
   <title>陈水洲 | Academic Homepage</title>
   <meta name="description" content="陈水洲的学术主页：AI for Science, Diffusion Models, Graph Foundation Models, Virtual Cells, Materials & Molecules." />
   <style>
@@ -10,17 +13,22 @@
        Base
        ========================= */
     :root {
-      --bg: #0b1020;
-      --bg-soft: #10182f;
-      --card: rgba(255, 255, 255, 0.06);
-      --card-border: rgba(255, 255, 255, 0.10);
-      --text: #eef2ff;
-      --muted: #b9c3e1;
-      --accent: #7cc7ff;
-      --accent-2: #9ff3d2;
-      --shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+      --bg: #0f0f0f;
+      --bg-soft: #1a1a1a;
+      --bg-grid: #252525;
+      --card: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e0e0e0;
+      --muted: #a0a0a0;
+      --accent: #4a9eff;
+      --accent-2: #6c5ce7;
+      --accent-3: #a29bfe;
+      --accent-4: #fdcb6e;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.2);
       --maxw: 1100px;
-      --radius: 20px;
+      --radius: 8px;
+      --transition: all 0.3s ease;
     }
 
     * { box-sizing: border-box; }
@@ -31,23 +39,74 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      font-family: 'Rajdhani', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
                    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(124, 199, 255, 0.15), transparent 28%),
-        radial-gradient(circle at top right, rgba(159, 243, 210, 0.10), transparent 24%),
-        linear-gradient(180deg, #09101f 0%, #0b1020 100%);
-      line-height: 1.72;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 50%, var(--bg-grid) 100%);
+      background-image: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 50%, var(--bg-grid) 100%),
+                        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px);
+      background-blend-mode: normal, overlay;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 30px
+      );
+      pointer-events: none;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    body::after {
+      content: 'CYBERPUNK 2077';
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(5rem, 12vw, 9rem);
+      letter-spacing: 0.6rem;
+      color: rgba(255, 255, 255, 0.06);
+      text-shadow: 0 0 10px rgba(74, 158, 255, 0.2);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: -1;
+      animation: logoFlicker 4s infinite;
+    }
+
+    @keyframes logoFlicker {
+      0%, 100% { opacity: 0.1; filter: blur(0px); }
+      5% { opacity: 0.16; filter: blur(1px); }
+      12% { opacity: 0.08; filter: blur(2px); }
+      18% { opacity: 0.14; filter: blur(0.5px); }
+      32% { opacity: 0.1; filter: blur(0px); }
+      45% { opacity: 0.13; filter: blur(1px); }
+      60% { opacity: 0.09; filter: blur(0px); }
+      75% { opacity: 0.15; filter: blur(1px); }
+      90% { opacity: 0.11; filter: blur(0px); }
     }
 
     a {
       color: var(--accent);
       text-decoration: none;
+      transition: var(--transition);
     }
 
     a:hover {
       text-decoration: underline;
+      color: var(--accent-3);
+      text-shadow: 0 0 10px var(--glow-pink);
     }
 
     .container {
@@ -60,9 +119,13 @@
     }
 
     .section-title {
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       margin: 0 0 14px;
-      letter-spacing: 0.2px;
+      letter-spacing: 1px;
+      font-family: 'Orbitron', monospace;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text);
     }
 
     .section-subtitle {
@@ -77,6 +140,13 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-2px);
     }
 
     /* =========================
@@ -86,9 +156,9 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(9, 16, 31, 0.72);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav {
@@ -102,10 +172,13 @@
     }
 
     .brand {
+      font-family: 'Orbitron', monospace;
       font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.2px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
       white-space: nowrap;
+      text-transform: uppercase;
+      color: var(--text);
     }
 
     .nav-links {
@@ -117,12 +190,34 @@
 
     .nav-links a {
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.9rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--accent);
       text-decoration: none;
+      transform: translateY(-1px);
     }
 
     /* =========================
@@ -144,17 +239,26 @@
       display: inline-block;
       margin-bottom: 14px;
       padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(124, 199, 255, 0.12);
+      border-radius: 6px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.2);
       color: var(--accent);
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     h1 {
       margin: 0 0 12px;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      line-height: 1.08;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      font-family: 'Orbitron', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
     }
 
     .hero p {
@@ -174,23 +278,29 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 16px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text);
-      font-weight: 600;
+      font-weight: 500;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       text-decoration: none;
+      transition: var(--transition);
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, rgba(124,199,255,0.18), rgba(159,243,210,0.16));
-      border-color: rgba(124,199,255,0.28);
+      background: rgba(74, 158, 255, 0.1);
+      border-color: var(--accent);
     }
 
     .btn:hover {
       text-decoration: none;
       transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .hero-side {
@@ -226,11 +336,22 @@
 
     .chip {
       padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--text);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      transition: var(--transition);
+    }
+
+    .chip:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
     }
 
     /* =========================
@@ -284,8 +405,9 @@
     }
 
     .timeline-date {
-      color: var(--accent-2);
-      font-weight: 700;
+      color: var(--accent-4);
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
       white-space: nowrap;
       align-self: start;
     }
@@ -344,14 +466,13 @@
       border: 1px solid rgba(255,255,255,0.07);
     }
 
-    /* =========================
-       Footer
-       ========================= */
     footer {
-      padding: 30px 0 48px;
+      padding: 30px 0 40px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      font-family: 'Rajdhani', sans-serif;
       text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     /* =========================
@@ -429,9 +550,9 @@
               <div class="chip">Multimodal Alignment</div>
             </div>
             <div class="hero-actions">
-              <a class="btn primary" href="mailto:shuizhou@shu.edu.cn">✉ 邮件联系</a>
-              <a class="btn" href="https://scholar.google.com/citations?user=vlVoFV4AAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-              <a class="btn" href="https://github.com/V-cyberpunk-01" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn primary" href="mailto:shuizhou@shu.edu.cn"><i class="fas fa-envelope"></i> 邮件联系</a>
+              <a class="btn" href="https://scholar.google.com/citations?user=vlVoFV4AAAAJ&hl=en" target="_blank" rel="noreferrer"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+              <a class="btn" href="https://github.com/V-cyberpunk-01" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub</a>
             </div>
           </div>
 
