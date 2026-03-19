@@ -67,34 +67,30 @@
       z-index: -1;
     }
 
-    body::after {
-      content: 'CYBERPUNK 2077';
+    .logo-flash {
       position: fixed;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Orbitron', monospace;
-      font-size: clamp(5rem, 12vw, 9rem);
+      font-size: clamp(4.5rem, 10vw, 8rem);
       letter-spacing: 0.6rem;
-      color: rgba(255, 255, 255, 0.06);
-      text-shadow: 0 0 10px rgba(74, 158, 255, 0.2);
+      color: rgba(255, 255, 255, 0.12);
+      text-shadow: 0 0 12px rgba(74, 158, 255, 0.25), 0 0 26px rgba(74, 158, 255, 0.15);
       opacity: 0.12;
       pointer-events: none;
-      z-index: -1;
-      animation: logoFlicker 4s infinite;
+      z-index: 20;
+      animation: logoFlash 15s ease-in-out infinite;
     }
 
-    @keyframes logoFlicker {
-      0%, 100% { opacity: 0.1; filter: blur(0px); }
-      5% { opacity: 0.16; filter: blur(1px); }
-      12% { opacity: 0.08; filter: blur(2px); }
-      18% { opacity: 0.14; filter: blur(0.5px); }
-      32% { opacity: 0.1; filter: blur(0px); }
-      45% { opacity: 0.13; filter: blur(1px); }
-      60% { opacity: 0.09; filter: blur(0px); }
-      75% { opacity: 0.15; filter: blur(1px); }
-      90% { opacity: 0.11; filter: blur(0px); }
+    @keyframes logoFlash {
+      0%, 100% { opacity: 0.12; transform: scale(1.01); filter: blur(1px); }
+      10% { opacity: 0.20; transform: scale(1); filter: blur(0px); }
+      25% { opacity: 0.16; transform: scale(1.02); filter: blur(1px); }
+      40% { opacity: 0.18; transform: scale(0.99); filter: blur(0px); }
+      60% { opacity: 0.14; transform: scale(1.01); filter: blur(1px); }
+      80% { opacity: 0.10; transform: scale(1.03); filter: blur(2px); }
     }
 
     a {
@@ -106,7 +102,7 @@
     a:hover {
       text-decoration: underline;
       color: var(--accent-3);
-      text-shadow: 0 0 10px var(--glow-pink);
+      text-shadow: 0 0 10px rgba(74, 158, 255, 0.35);
     }
 
     .container {
@@ -459,6 +455,13 @@
       margin-top: 12px;
     }
 
+    .highlight-list-horizontal {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
     .highlight {
       padding: 14px 16px;
       border-radius: 16px;
@@ -518,7 +521,7 @@
     <nav class="nav">
       <div class="brand">陈水洲 · Academic Homepage</div>
       <div class="nav-links">
-        <a href="#about">关于</a>
+        <a href="#about">最新动态</a>
         <a href="#education">教育</a>
         <a href="#research">科研</a>
         <a href="#projects">项目</a>
@@ -528,6 +531,8 @@
       </div>
     </nav>
   </div>
+
+  <div class="logo-flash" aria-hidden="true">CYBERPUNK</div>
 
   <main>
     <section class="hero">
@@ -575,22 +580,24 @@
     </section>
 
     <section id="about" class="section">
-      <div class="container grid-2">
+      <div class="container">
         <div class="content-card card">
-          <h2 class="section-title">研究兴趣</h2>
+          <h2 class="section-title">最新动态</h2>
           <p>
-            GNN、Diffusion model、Graph foundation model（面向 AIVC、动态模拟、
-            材料与分子逆向设计），以及 Diffusion LM、多模态表示学习与对齐。
+            最近主要专注于基于 Diffusion Models 与 Graph Foundation Models 的多尺度建模，推进 AIVC（虚拟细胞）与材料/分子逆向设计方向的研究和落地。
           </p>
-        </div>
-        <div class="content-card card">
-          <h2 class="section-title">荣誉与资质</h2>
           <div class="highlight-list">
+            <div class="highlight">2025.11 – 至今：上海人工智能实验室（AIVC 虚拟细胞大模型研发）</div>
+            <div class="highlight">2025.09 – 2025.10：上海人工智能实验室（材料势函数建模、深度学习算法研发）</div>
+            <div class="highlight">2024.02：Microsoft AI4Science “明日之星”项目研究实习完成</div>
+            <div class="highlight">近期成果：Kaggle Competition Expert（Top 2%）、已公开专利 1 项、软件著作权 3 项</div>
+          </div>
+
+          <h3 class="section-subtitle" style="margin-top: 24px;">荣誉与资质</h3>
+          <div class="highlight-list-horizontal">
             <div class="highlight">上海大学国家奖学金（2022）</div>
             <div class="highlight">英语六级 607 分</div>
             <div class="highlight">上海大学计算机学院学业奖学金第一名（2022）</div>
-            <div class="highlight">Kaggle Competition Expert（Top 2%）</div>
-            <div class="highlight">已公开专利 1 项，软件著作权 3 项</div>
           </div>
         </div>
       </div>
@@ -616,6 +623,19 @@
       <div class="container">
         <div class="content-card card">
           <h2 class="section-title">科研经历</h2>
+
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-title">东京大学 · 日本</div>
+              <div class="timeline-sub">境外合作研究（几何深度学习方向）</div>
+              <div class="inline-note">Mentor：Ichigaku Takigawa 教授（东京大学）</div>
+              <ul class="clean">
+                <li>参与日本 JSPS KAKENHI 国际合作项目 (Grant: 24K23848, 25K03174)</li>
+                <li>围绕材料/催化性质预测中的几何深度学习与领域模型开展研究。</li>
+              </ul>
+            </div>
+            <div class="timeline-date">2025.03 – 至今</div>
+          </div>
 
           <div class="timeline-item">
             <div>
